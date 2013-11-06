@@ -1,0 +1,12 @@
+<h1>Index of all pictures</h1>
+
+<ul>
+<% @list_of_pictures.each do |pic| %>
+<li>
+	<<img width ="200" src="<%= pic.source %>"
+	<p><%= pic.caption %></p>
+
+</li>
+
+<% end %>
+</ul>
