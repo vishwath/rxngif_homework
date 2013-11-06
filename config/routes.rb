@@ -3,4 +3,9 @@ Rxngif::Application.routes.draw do
 
   get("/all_pictures", { :controller => "pictures", :action => "index" })
 
+  get("/new_picture_form", { :controller => "pictures", :action => "new" })
+
+  get("/create_picture", { :controller => "pictures", :action => "create" })
+
+
 end
