@@ -17,12 +17,13 @@ class PicturesController < ApplicationController
   @p.caption = params[:caption]
   @p.save
 
+  redirect_to "http://localhost:3000/all_pictures", :notice => "Your picture has been created"
+
   end
 
   def edit
 
   @p_edited = Picture.find(params[:id])
-  
 
   end
 
@@ -40,6 +41,8 @@ def update
 
   	@picture_delete = Picture.find(params[:id])
   	@picture_delete.destroy
+    
+    redirect_to "http://localhost:3000/all_pictures", :notice => "Your picture has been deleted"
   	
 
   end

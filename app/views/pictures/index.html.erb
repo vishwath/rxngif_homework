@@ -3,7 +3,12 @@
 <ul>
 <% @list_of_pictures.each do |pic| %>
 <li>
-	<<img width ="200" src="<%= pic.source %>"
+	
+	<div>
+	<img width ="200" src="<%= pic.source %>"
+	
+	</div>
+	
 	<p><%= pic.caption %></p>
 
 </li>
