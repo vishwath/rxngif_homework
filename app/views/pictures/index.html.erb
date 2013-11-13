@@ -1,17 +1,19 @@
-<h1>Index of all pictures</h1>
+<h1>Index of all Pictures</h1>
+
+<%= link_to "Add a new picture", new_picture_url %>
+
 
 <ul>
 <% @list_of_pictures.each do |pic| %>
 <li>
-	
-	<div>
-	<img width ="200" src="<%= pic.source %>"
-	
-	</div>
-	
-	<p><%= pic.caption %></p>
+<div>
+<%=image_tag(pic.source, :width=>200)%>
+</div>
+<p><%= pic.caption %></p>
 
+<%= link_to "Show", picture_url(pic.id), :method => "get" %>
+<%= link_to "Edit", edit_picture_url(pic.id), :method => "get" %>
+<%= link_to "Destroy", picture_url(pic.id), :method => "delete" %>
 </li>
-
 <% end %>
 </ul>

@@ -1,49 +1,41 @@
 class PicturesController < ApplicationController
   def show
-
-  		@picture = Picture.find(params[:id])
-
+  @picture = Picture.find(params[:id])
   end
 
   def index
-
-  		@list_of_pictures = Picture.all
-  	end
-
-  def create
-
-  @p = Picture.new
-  @p.source = params[:source]
-  @p.caption = params[:caption]
-  @p.save
-
-  redirect_to "http://localhost:3000/all_pictures", :notice => "Your picture has been created"
-
+  @list_of_pictures = Picture.all
   end
 
-  def edit
+  def new
+end
 
-  @p_edited = Picture.find(params[:id])
-
-  end
+def create
+  p = Picture.new
+  p.source = params[:source]
+  p.caption = params[:caption]
+  p.save
+  
+  redirect_to pictures_url, :notice => "You have created a new picture" 
+end
 
 def update
+  p = Picture.find(params[:id])
+  p.source = params[:source]
+  p.caption = params[:caption]
+  p.save
+  redirect_to picture_url(p.id), :notice => "You have updated the picture"
+end
 
-  @p_update = Picture.find(params[:id])
-  @p_update.source = params[:source]
-  @p_update.caption = params[:caption]
-  @p_update.save
+def edit
+  @picture = Picture.find(params[:id])
 
-  end
-
+end
 
   def destroy
-
-  	@picture_delete = Picture.find(params[:id])
-  	@picture_delete.destroy
-    
-    redirect_to "http://localhost:3000/all_pictures", :notice => "Your picture has been deleted"
-  	
-
+  p = Picture.find(params[:id])
+  p.destroy
+  redirect_to pictures_url, :notice => "You have deleted the picture"
+ 
   end
 end
